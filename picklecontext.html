@@ -1,0 +1,50 @@
+<!doctype html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Pickle Context Menu</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="src/picklecontext.css" rel="stylesheet" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <ul>
+        <li>Coffee <i class="fa fa-list contextTrigger"></i></li>
+        <li>Tea <i class="fa fa-list contextTrigger"></i></li>
+        <li>Milk <i id="context3" class="fa fa-list contextTrigger"></i></li>
+    </ul>
+    <script src="src/picklecontext.js"></script>
+    <script>
+        //creating new menu
+        const context1 = new PickleContext({
+            //target
+            c_target: 'contextTrigger',
+            //nodes
+            c_nodes: [{
+                icon: 'fa fa-edit',
+                title: 'Edit',
+                //context button click event
+                onClick: (node) => {
+                    console.log('edit - ' + node.id);
+                }
+            }, {
+                icon: 'fa fa-trash',
+                title: 'Delete',
+                onClick: (node) => {
+                    console.log('delete - ' + node.id);
+                }
+            }]
+        });
+    </script>
+</body>
+
+</html>
