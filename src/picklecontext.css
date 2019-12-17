@@ -38,11 +38,14 @@
 }
 
 .menuCont span:last-child:hover {
-    border-radius: 0px 0px 16px 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
 }
 
 .menuCont span:first-child:hover {
-    border-radius: 16px 16px 0px 0px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    
 }
 
 .menuCont span:hover {
