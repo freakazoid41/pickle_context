@@ -24,10 +24,12 @@ class PickleContext {
             let elm = e.target.parentNode;
             //clean menus
             this.cleanMenu();
-            if (e.target.classList.contains(this.target)) {
-                //build menu id is target
-                this.buildMenu(e.target)
-            }
+            setTimeout(() => {
+                if (e.target.classList.contains(this.target)) {
+                    //build menu id is target
+                    this.buildMenu(e.target)
+                }   
+            }, 50);
         });
     }
 
