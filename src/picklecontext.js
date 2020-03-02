@@ -26,8 +26,10 @@ class PickleContext {
             this.cleanMenu();
             setTimeout(() => {
                 if (e.target.classList.contains(this.target)) {
-                    //build menu id is target
-                    this.buildMenu(e.target)
+                    setTimeout(() => {
+                        //build menu id is target
+                        this.buildMenu(e.target)
+                    }, 30);
                 }   
             }, 50);
         });
