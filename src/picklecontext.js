@@ -21,17 +21,15 @@ class PickleContext {
     staticEvents() {
         //if click is target then create menu else clean other menus in dom
         document.body.addEventListener('click', e => {
-            let elm = e.target.parentNode;
             //clean menus
             this.cleanMenu();
             setTimeout(() => {
                 if (e.target.classList.contains(this.target)) {
-                    setTimeout(() => {
-                        //build menu id is target
-                        this.buildMenu(e.target)
-                    }, 30);
-                }   
+                    //build menu id is target
+                    this.buildMenu(e.target, e)
+                }
             }, 50);
+
         });
     }
 
@@ -52,16 +50,19 @@ class PickleContext {
      * first it will take target location
      * @param {html element} element 
      */
-    buildMenu(element) {
+    buildMenu(element, e) {
         //get element location
         let x = element.getBoundingClientRect();
         let origin = {
             node: element,
-            left: x.x,
-            top: x.y + x.height
+            left: e.clientX,
+            top: e.clientY
+                /*left: x.x,
+                top: x.y + x.height*/
         };
         //draw menu
         this.drawMenu(origin)
+        return true;
     }
 
     drawMenu(obj) {
@@ -71,8 +72,7 @@ class PickleContext {
         if (document.getElementById('div_menu_' + obj.node.id) === null) {
             //create menu div
             let menu_item = document.createElement('div');
-            //add to body
-            document.body.appendChild(menu_item);
+
             menu_item.id = 'div_menu_' + obj.node.id;
             menu_item.classList.add('menuCont');
 
@@ -99,6 +99,8 @@ class PickleContext {
                 menu_item.style.left = obj.left + 'px';
             }
             menu_item.style.top = obj.top + 'px';
+            //add to body
+            document.body.appendChild(menu_item);
         }
 
     }
